@@ -1,15 +1,17 @@
 const express = require("express");
 const userDB = require("../models/signup");
+
 const router = new express.Router();
 
 var tempEmail = null;
 var user = null;
 
+
 router.post("/signup", async (req, res) => {
   user = new userDB(req.body);
+
   tempEmail = req.body.email;
   const checkUser = await userDB.findOne({ email: tempEmail });
-
 
   try {
     if (checkUser == null) {

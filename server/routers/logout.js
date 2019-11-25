@@ -4,7 +4,7 @@ const router = new express.Router();
 
 router.post("/logout", async (req, res) => {
   const value = await userDB.findOneAndUpdate(
-    { email: req.body.email },
+    { token: req.body.token },
     { $set: { token: null } }
   );
   try {
